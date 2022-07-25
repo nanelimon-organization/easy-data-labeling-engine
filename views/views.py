@@ -26,9 +26,12 @@ def label_as_bully(id):
 
 @tagging_operations.route('/not_bulling/<int:id>')
 def label_as_not_bully(id):
+    Scraped.label_update(id=id, label=False, tagging_status= True)
     Tagging.new_data_insert(scraped_id=id, tagger=getpass.getuser())
     return redirect('/')
 
 @tagging_operations.route('/delete/<int:id>')
 def delete(id):
+    #Zorbalık yok ama Tagging datasına(yani nihayi datasete) dahil edilmeyecek.
+    Scraped.label_update(id=id, label=False, tagging_status= True)
     return redirect('/')
