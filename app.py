@@ -17,8 +17,9 @@ app.config['SESSION_TYPE'] = 'filesystem'
 
 app.register_blueprint(tagging_operations)
 models_db.init_app(app)
-"""with app.app_context():
-    models_db.create_all()"""
+
+with app.app_context():
+    models_db.create_all()
 
 if __name__ == "__main__":
     app.run()

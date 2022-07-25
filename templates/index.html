@@ -2,23 +2,25 @@
 {% block body %}
 
 
-<div class="container" style="margin-top:2%">
+<div class="container">
     {% if warning %}
         <div class="alert alert-success">
             {{ warning }}</div>
     {% endif %}
-
-    {% for i in text %}
-  <div class="row">
+    {% for i in text|batch(2) %}
+  <div class="row" style="margin-top:1%">
+  {% for c in i %}
     <div class="col-md-6">
-      <div class="card">
+      <div class="card" id="{{ c.id }}">
           <div class="card-body">
-            <p class="card-text">{i}</p>
-            <a href="#" class="btn btn-outline-warning">DEĞİL</a>
-            <a href="#" class="btn btn-warning">ZORBALIK</a>
+            <p class="card-text">{{ c.text }}</p>
+            <a href="bullying/{{ c.id }}" class="btn btn-warning">ZORBALIK</a>
+            <a href="not_bulling/{{ c.id }}" class="btn btn-outline-warning">DEĞİL</a>
+            <a href="delete/{{ c.id }}" class="btn btn-danger float-end">SİL</a>
           </div>
         </div>
     </div>
+      {% endfor %}
   </div>
     {% endfor %}
 </div>
