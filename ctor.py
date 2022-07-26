@@ -38,7 +38,7 @@ def dummy():
         try:
             # load the data into a Pandas DataFrame
             with engine.begin() as connection:
-                df.to_sql('scraped', con=connection, if_exists='append')
+                df.to_sql('scraped', con=connection, if_exists='replace')
                 print('Done, ok!')
         except Exception as ex:
             print('Something went wrong!', ex)
