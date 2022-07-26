@@ -15,7 +15,7 @@ def dummy():
         print("Can't create 'engine", ex)
     else:
         # Get data from CSV file to DataFrame(Pandas)
-        with open('static/datas/data2.csv', newline='\n') as csvfile:
+        with open('static/datas/data.csv', newline='\n') as csvfile:
             reader = csv.DictReader(csvfile)
             columns = [
                 'id',
