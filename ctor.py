@@ -9,7 +9,10 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 # Create engine to connect with DB
 def dummy():
     try:
-        engine = create_engine('sqlite:///' + os.path.join(basedir, 'database.db'), echo=True)
+        #engine = create_engine('sqlite:///' + os.path.join(basedir, 'database.db'), echo=True)
+        engine = create_engine("postgresql://scibriigaxirvh" \
+                                        ":701e929c57a1042d3ac1c53aa27a433ca0c15541329106abe1a012d00be8d533@ec2-107-22" \
+                                        "-122-106.compute-1.amazonaws.com:5432/d9i8pr0r2k38vf ", echo=True)
         print('Engine created!')
     except Exception as ex:
         print("Can't create 'engine", ex)
