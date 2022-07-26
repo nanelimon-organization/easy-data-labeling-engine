@@ -8,8 +8,8 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 try:
     engine = create_engine('sqlite:///' + os.path.join(basedir, 'database.db'), echo=True)
     print('Engine created!')
-except:
-    print("Can't create 'engine")
+except Exception as ex:
+    print("Can't create 'engine", ex)
 else:
     # Get data from CSV file to DataFrame(Pandas)
     with open('static/datas/data.csv', newline='\n') as csvfile:
@@ -33,5 +33,5 @@ else:
         with engine.begin() as connection:
             df.to_sql('scraped', con=connection, if_exists='append')
             print('Done, ok!')
-    except:
-        print('Something went wrong!')
+    except Exception as ex:
+        print('Something went wrong!', ex)

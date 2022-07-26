@@ -4,7 +4,6 @@ from flask import Flask
 from models.models import db as models_db
 from views.views import tagging_operations
 
-
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 
