@@ -46,6 +46,6 @@ def delete(id):
 def extract_dataset():
     query = Tagging.query\
             .join(Scraped)\
-            .filter(Tagging.scraped_id == Scraped.id).all()
-
+            .filter(Tagging.scraped_id == Scraped.id)
+    print(query)
     return render_template('dataset.html', user=user, dataset=query)

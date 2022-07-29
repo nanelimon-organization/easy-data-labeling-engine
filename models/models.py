@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from sqlalchemy import ForeignKey
+from sqlalchemy.orm import relationship
 
 db = SQLAlchemy()
 
@@ -8,7 +9,7 @@ db = SQLAlchemy()
 # Kazınmış Veri Tablosu
 class Scraped(db.Model):
     __tablename__ = 'scraped'
-    id = db.Column('id', db.Integer, primary_key=True)
+    id = db.Column('id', db.Integer, primary_key=True, nullable=False)
     text = db.Column('text', db.String(300))
     label = db.Column('label', db.String(100))
     tagging_status = db.Column('tagging_status', db.Boolean, default=False)
@@ -25,9 +26,10 @@ class Scraped(db.Model):
 class Tagging(db.Model):
     __tablename__ = 'tagging'
     id = db.Column('id', db.Integer, primary_key=True, autoincrement=True, nullable=False)
-    scraped_id = db.Column('scraped_id', db.Integer, ForeignKey('parent.id'), nullable=False)
+    scraped_id = db.Column('scraped_id', db.Integer, ForeignKey('scraped.id'), nullable=False)
     tagger = db.Column('tagger', db.String(100))
     tagged_date = db.Column('tagged_date', db.DateTime, default=datetime.now())
+    scrap = relationship("Scraped", back_populates="tagging")
 
     def new_data_insert(scraped_id, tagger):
         inserting = Tagging(

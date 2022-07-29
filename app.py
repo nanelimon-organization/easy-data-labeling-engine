@@ -1,7 +1,9 @@
 import os
 from flask import Flask
+from sqlalchemy.orm import relationship
+
 from flask_session import Session
-from models.models import db as models_db
+from models.models import db as models_db, Tagging
 from views.views import tagging_operations
 
 
@@ -24,4 +26,5 @@ models_db.init_app(app)
 
 
 with app.app_context():
+    Tagging.scraped_id = relationship("Tagging", order_by=Tagging.id, back_populates="scrap")
     models_db.create_all()
