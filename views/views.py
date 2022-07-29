@@ -47,8 +47,7 @@ def extract_dataset():
         '-165.compute-1.amazonaws.com:5432/da5jjovb79fk6g',
         echo=True)
     connection = engine.raw_connection()
-    query = 'SELECT tagging.scraped_id, scraped.text, tagging.tagger, tagging.tagged_date, scraped.label FROM tagging INNER JOIN scraped ON scraped.id = tagging.scraped_id''
+    query = 'SELECT tagging.scraped_id, scraped.text, tagging.tagger, tagging.tagged_date, scraped.label FROM tagging INNER JOIN scraped ON scraped.id = tagging.scraped_id'
     df = pd.read_sql(query ,con=connection, index_col="scraped_id")
     df.to_csv('static/datas/dataset.csv')
     return redirect('/')
-
