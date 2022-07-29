@@ -12,9 +12,7 @@ app.secret_key = "cokgizlibiranahtar"
 
 """app.config['SQLALCHEMY_DATABASE_URI'] = \
     'sqlite:///' + os.path.join(basedir, 'database.db')"""
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://tfebtxzxlgssjc' \
-                                        ':41e1741c907c8fa23d960f7c99b53cc83688da12337f4565dde9d9e51c96f899@ec2-54-225' \
-                                        '-234-165.compute-1.amazonaws.com:5432/da5jjovb79fk6g '
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ktbzsdryoagyfd:77e6db1cf7aeff73105c60b05327baab2510216f8fb7736f9f8b36cf005a284b@ec2-44-195-100-240.compute-1.amazonaws.com:5432/dem8vtnut4f7km'
 
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
