@@ -1,30 +1,33 @@
-{% extends "layout.html"  %}
-{% block body %}
-
-
-<div class="container">
-    {% if warning %}
-        <div class="alert alert-success">
-            {{ warning }}</div>
-    {% endif %}
-    {% for i in text|batch(2) %}
-  <div class="row" style="margin-top:1%">
-  {% for c in i %}
-    <div class="col-md-6">
+{% extends "layout.html"  %} {% block body %} <div class="container"> {% if warning %} <div class="alert alert-success">
+    {{ warning }}
+  </div> {% endif %} {% for i in text|batch(2) %} <div class="row" style="margin-top:1%"> {% for c in i %} <div class="col-md-6">
       <div class="card" id="{{ c.id }}">
-          <div class="card-body">
-            <p class="card-text">{{ c.text }}</p>
-            <a href="bullying/{{ c.id }}" class="btn btn-warning">ZORBALIK</a>
-            <a href="not_bulling/{{ c.id }}" class="btn btn-outline-warning">DEĞİL</a>
-            <a href="delete/{{ c.id }}" class="btn btn-danger float-end">SİL</a>
+        <div class="card-body">
+          <p class="card-text">{{ c.text }}</p>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="dropdown">
+                <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> ZORBALIK </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li>
+                    <a class="dropdown-item" href="#">Siyasi Zorbalık</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Irkçılık</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Hakaret</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <a href="not_bulling/{{ c.id }}" class="btn btn-outline-warning">NÖTR</a>
+            </div>
+            <div class="col-md-6">
+              <a href="delete/{{ c.id }}" class="btn btn-danger float-end">SİL</a>
+            </div>
           </div>
         </div>
-    </div>
-      {% endfor %}
-  </div>
-    {% endfor %}
-</div>
-
-
-{% endblock %}
-
+      </div>
+    </div> {% endfor %} </div> {% endfor %} </div> {% endblock %}

@@ -24,7 +24,7 @@ class Scraped(db.Model):
 class Tagging(db.Model):
     __tablename__ = 'tagging'
     id = db.Column('id', db.Integer, primary_key=True, autoincrement=True, nullable=False)
-    scraped_id = db.Column('scraped_id', db.Integer, db.ForeignKey('scraped.id'))
+    scraped_id = db.Column('scraped_id', db.Integer)
     tagger = db.Column('tagger', db.String(100))
     tagged_date = db.Column('tagged_date', db.DateTime, default=datetime.now())
 
