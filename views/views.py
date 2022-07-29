@@ -43,10 +43,11 @@ def delete(id):
 @tagging_operations.route('/extract_dataset')
 def extract_dataset():
     engine = create_engine(
-        'mysql+pymysql://Imcseyma_seymas:Ep969p7X@93.89.225.181/Imcseyma_db_nan',
+        'postgres://tfebtxzxlgssjc:41e1741c907c8fa23d960f7c99b53cc83688da12337f4565dde9d9e51c96f899@ec2-54-225-234'
+        '-165.compute-1.amazonaws.com:5432/da5jjovb79fk6g',
         echo=True)
     connection = engine.raw_connection()
-    query = "SELECT tagging.scraped_id, scraped.text, tagging.tagger, tagging.tagged_date, scraped.label FROM tagging INNER JOIN scraped ON scraped.id = tagging.scraped_id"
+    query = 'SELECT tagging.scraped_id, scraped.text, tagging.tagger, tagging.tagged_date, scraped.label FROM tagging INNER JOIN scraped ON scraped.id = tagging.scraped_id''
     df = pd.read_sql(query ,con=connection, index_col="scraped_id")
     df.to_csv('static/datas/dataset.csv')
     return redirect('/')
