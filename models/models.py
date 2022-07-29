@@ -9,9 +9,8 @@ class Scraped(db.Model):
     __tablename__ = 'scraped'
     id = db.Column('id', db.Integer, primary_key=True)
     text = db.Column('text', db.String(300))
-    label = db.Column('label', db.Boolean)
+    label = db.Column('label', db.String(100))
     tagging_status = db.Column('tagging_status', db.Boolean, default=False)
-
 
     def label_update(id, label, tagging_status):
         updating = Scraped.query.where(Scraped.id == id).first()

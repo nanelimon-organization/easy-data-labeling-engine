@@ -10,7 +10,10 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 def dummy():
     try:
         """engine = create_engine('sqlite:///' + os.path.join(basedir, 'database.db'), echo=True)"""
-        engine = create_engine('postgresql://tfebtxzxlgssjc:41e1741c907c8fa23d960f7c99b53cc83688da12337f4565dde9d9e51c96f899@ec2-54-225-234-165.compute-1.amazonaws.com:5432/da5jjovb79fk6g', echo=True)
+        engine = create_engine(
+            'postgresql://tfebtxzxlgssjc:41e1741c907c8fa23d960f7c99b53cc83688da12337f4565dde9d9e51c96f899@ec2-54-225'
+            '-234-165.compute-1.amazonaws.com:5432/da5jjovb79fk6g',
+            echo=True)
         print('Engine created!')
     except Exception as ex:
         print("Can't create 'engine", ex)
@@ -27,7 +30,7 @@ def dummy():
             df = pd.DataFrame(data=reader, columns=columns)
             # Dataframe editing.
             df['id'] = df['id'].astype(int)
-            df['label'] = df['label'].astype(bool)
+            df['label'] = df['label'].astype(object)
             df['tagging_status'] = df['tagging_status'].astype(bool)
             df['tagging_status'] = df['tagging_status'].ffill()
             print(df.head(15))
@@ -40,3 +43,6 @@ def dummy():
                 print('Done, ok!')
         except Exception as ex:
             print('Something went wrong!', ex)
+
+
+dummy()
