@@ -43,7 +43,7 @@ def delete(id):
 @tagging_operations.route('/extract_dataset')
 def extract_dataset():
     engine = create_engine(
-        'postgres://ktbzsdryoagyfd:77e6db1cf7aeff73105c60b05327baab2510216f8fb7736f9f8b36cf005a284b@ec2-44-195-100-240.compute-1.amazonaws.com:5432/dem8vtnut4f7km',
+        'postgresql://ktbzsdryoagyfd:77e6db1cf7aeff73105c60b05327baab2510216f8fb7736f9f8b36cf005a284b@ec2-44-195-100-240.compute-1.amazonaws.com:5432/dem8vtnut4f7km',
         echo=True)
     connection = engine.raw_connection()
     query = 'SELECT tagging.scraped_id, scraped.text, tagging.tagger, tagging.tagged_date, scraped.label FROM tagging INNER JOIN scraped ON scraped.id = tagging.scraped_id'
