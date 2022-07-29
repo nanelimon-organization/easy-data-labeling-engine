@@ -1,5 +1,5 @@
 import pandas as pd
-from flask import Blueprint, render_template, redirect
+from flask import Blueprint, render_template, redirect, request
 import getpass
 
 from sqlalchemy import create_engine
@@ -20,16 +20,16 @@ def index():
     return render_template('index.html', text=query, warning=warning, user=user)
 
 
-@tagging_operations.route('/bullying/<int:id>')
-def label_as_bully(id):
-    Scraped.label_update(id=id, label=True, tagging_status=True)
+@tagging_operations.route('/bullying/<string:selected>/<int:id>')
+def label_as_bully(id, selected):
+    Scraped.label_update(id=id, label=selected, tagging_status=True)
     Tagging.new_data_insert(scraped_id=id, tagger=getpass.getuser())
     return redirect('/')
 
 
 @tagging_operations.route('/not_bulling/<int:id>')
 def label_as_not_bully(id):
-    Scraped.label_update(id=id, label=False, tagging_status=True)
+    Scraped.label_update(id=id, label='Nötr', tagging_status=True)
     Tagging.new_data_insert(scraped_id=id, tagger=getpass.getuser())
     return redirect('/')
 
@@ -37,7 +37,7 @@ def label_as_not_bully(id):
 @tagging_operations.route('/delete/<int:id>')
 def delete(id):
     # Zorbalık yok ama Tagging datasına(yani nihayi datasete) dahil edilmeyecek.
-    Scraped.label_update(id=id, label=False, tagging_status=True)
+    Scraped.label_update(id=id, label='Sil', tagging_status=True)
     return redirect('/')
 
 
