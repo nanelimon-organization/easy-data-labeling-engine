@@ -14,11 +14,9 @@
         {% for i in dataset %}
             <tbody>
                 <tr>
-                    <td>{{ i.scraped_id }}</td>
-                    <td>{{ i.text }}</td>
-                    <td>{{ i.tagger }}</td>
-                    <td>{{ i.tagged_date }}</td>
-                    <td>{{ i.label }}</td>
+                    {% for row_ in i %}
+                    <td>{{ row_ }}</td>
+                    {% endfor %}
                 </tr>
             </tbody>
         {% endfor %}

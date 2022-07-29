@@ -26,5 +26,4 @@ models_db.init_app(app)
 
 
 with app.app_context():
-    Tagging.scraped_id = relationship("Tagging", order_by=Tagging.id, back_populates="scrap")
     models_db.create_all()

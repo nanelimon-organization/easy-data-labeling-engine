@@ -26,10 +26,9 @@ class Scraped(db.Model):
 class Tagging(db.Model):
     __tablename__ = 'tagging'
     id = db.Column('id', db.Integer, primary_key=True, autoincrement=True, nullable=False)
-    scraped_id = db.Column('scraped_id', db.Integer, ForeignKey('scraped.id'), nullable=False)
+    scraped_id = db.Column('scraped_id', db.Integer, nullable=False)
     tagger = db.Column('tagger', db.String(100))
     tagged_date = db.Column('tagged_date', db.DateTime, default=datetime.now())
-    scrap = relationship("Scraped", back_populates="tagging")
 
     def new_data_insert(scraped_id, tagger):
         inserting = Tagging(
