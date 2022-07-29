@@ -2,3 +2,7 @@ venv
 .env
 database.db
 notes.txt
+__pycache__/
+static/datas/data2.csv
+static/datas/dataset.csv
+static/.DS_Store
