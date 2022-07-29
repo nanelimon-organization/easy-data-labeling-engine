@@ -43,7 +43,7 @@ def delete(id):
 @tagging_operations.route('/extract_dataset')
 def extract_dataset():
     engine = create_engine(
-        'postgres://tfebtxzxlgssjc:41e1741c907c8fa23d960f7c99b53cc83688da12337f4565dde9d9e51c96f899@ec2-54-225-234'
+        'postgresql://tfebtxzxlgssjc:41e1741c907c8fa23d960f7c99b53cc83688da12337f4565dde9d9e51c96f899@ec2-54-225-234'
         '-165.compute-1.amazonaws.com:5432/da5jjovb79fk6g',
         echo=True)
     connection = engine.raw_connection()
