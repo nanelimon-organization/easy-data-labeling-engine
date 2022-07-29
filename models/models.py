@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from sqlalchemy import ForeignKey
 
 db = SQLAlchemy()
 
@@ -24,7 +25,7 @@ class Scraped(db.Model):
 class Tagging(db.Model):
     __tablename__ = 'tagging'
     id = db.Column('id', db.Integer, primary_key=True, autoincrement=True, nullable=False)
-    scraped_id = db.Column('scraped_id', db.Integer)
+    scraped_id = db.Column('scraped_id', db.Integer, ForeignKey('parent.id'), nullable=False)
     tagger = db.Column('tagger', db.String(100))
     tagged_date = db.Column('tagged_date', db.DateTime, default=datetime.now())
 
