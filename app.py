@@ -1,6 +1,6 @@
 import os
 from flask import Flask
-
+from flask_session import Session
 from models.models import db as models_db
 from views.views import tagging_operations
 
@@ -17,6 +17,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ktbzsdryoagyfd:77e6db1cf7a
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SESSION_TYPE'] = 'filesystem'
+Session(app)
 
 app.register_blueprint(tagging_operations)
 models_db.init_app(app)
