@@ -14,7 +14,7 @@ lml==0.1.0
 MarkupSafe==2.1.1
 numpy==1.23.1
 pandas==1.4.3
-psycopg2==2.9.3
+psycopg2-binary==2.9.3
 pyexcel==0.7.0
 pyexcel-io==0.6.6
 pyexcel-webio==0.1.4

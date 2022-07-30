@@ -11,15 +11,17 @@
                     <th>label</th>
                 </tr>
             </thead>
-        {% for i in dataset %}
+
             <tbody>
+            {% for i in dataset %}
                 <tr>
                     {% for row_ in i %}
                     <td>{{ row_ }}</td>
                     {% endfor %}
                 </tr>
+            {% endfor %}
             </tbody>
-        {% endfor %}
+
         </table>
 </div>
 
