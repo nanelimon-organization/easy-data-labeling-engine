@@ -1,19 +1,20 @@
 import pandas as pd
 from flask import Blueprint, render_template, redirect, request, session
+import getpass
+import socket
 from sqlalchemy import create_engine
 from models.models import Tagging, Scraped
 
 tagging_operations = Blueprint('tagging_operations', __name__)
 
-
 @tagging_operations.route('/', methods=['GET'])
 def index():
-    user = session['user']
+    session["user"] = '' if "user" not in session else session["user"]
     query = Scraped.query.filter(Scraped.tagging_status == False).all()
     warning = None
     if len(query) < 1:
         warning = 'Bütün Tweetler Etiketlendi!'
-    return render_template('index.html', text=query, warning=warning, user=user)
+    return render_template('index.html', text=query, warning=warning, user=session["user"])
 
 
 @tagging_operations.route('/user_info', methods=['POST'])
@@ -48,7 +49,7 @@ def delete(id):
 
 @tagging_operations.route('/extract_dataset')
 def extract_dataset():
-    user = session['user']
+    user = 'seymasa' if session['user'] == 'None' else session['user']
     df = create_final_dataset()
     print(df.head(3))
     print(df.values.tolist())
@@ -64,3 +65,4 @@ def create_final_dataset():
             'FROM tagging INNER JOIN scraped ON scraped.id = tagging.scraped_id '
     df = pd.read_sql(query, con=connection, index_col="id")
     return df
+
