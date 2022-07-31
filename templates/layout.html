@@ -18,12 +18,21 @@
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
       <a class="navbar-brand" href="/">  <i class="fa fa-hashtag" aria-hidden="true"></i>
 Nane&Limon . Veri Etiketleme - 1.0.0 <i class="fa fa-hashtag" aria-hidden="true"></i></a>
-      <span class="navbar-text" style="margin-left:auto; margin-right:1%;"> Hoş geldiniz Sn. {{ user }}
+      <span class="navbar-text" style="margin-left:auto; margin-right:1%;"> Hoş geldiniz Sn.
+          <form class="form-detail" id="uyelikformu" action="/user_info" method="POST">
+          <div class="input-group mb-3">
+              <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="user" id="user" placeholder="örneğin; seymasa" value="{{ user }}">
+              <input type="submit" name="kaydet" id="kaydet" class="btn btn-success" value="KULLANICI KAYDET">
+              <a class="btn btn-danger" href="/extract_dataset">
+                <i class="fa fa-database" aria-hidden="true"></i> Dataseti Çıkar </a>
+            </div>
+          </form>
       </span>
-      <a class="btn btn-danger" href="/extract_dataset">
-        <i class="fa fa-database" aria-hidden="true"></i> Dataseti Çıkar </a>
+
     </nav> {% block body %} {% endblock %}
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
