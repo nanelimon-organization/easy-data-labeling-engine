@@ -9,12 +9,12 @@ tagging_operations = Blueprint('tagging_operations', __name__)
 
 @tagging_operations.route('/', methods=['GET'])
 def index():
-    session["user"] = '' if "user" not in session else session["user"]
+    user = '' if "user" not in session else session["user"]
     query = Scraped.query.filter(Scraped.tagging_status == False).all()
     warning = None
     if len(query) < 1:
         warning = 'Bütün Tweetler Etiketlendi!'
-    return render_template('index.html', text=query, warning=warning, user=session["user"])
+    return render_template('index.html', text=query, warning=warning, user=user)
 
 
 @tagging_operations.route('/user_info', methods=['POST'])
