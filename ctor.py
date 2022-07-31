@@ -33,7 +33,6 @@ def dummy():
             df['tagging_status'] = df['tagging_status'].astype(bool)
             df['tagging_status'] = df['tagging_status'].ffill()
             print(df.head(15))
-            df = df.sample(n=9000)
         # Standart method of Pandas to deliver data from DataFrame to Database table.
         try:
             # load the data into a Pandas DataFrame
