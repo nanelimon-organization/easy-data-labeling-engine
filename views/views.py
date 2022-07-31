@@ -1,11 +1,10 @@
 import pandas as pd
 from flask import Blueprint, render_template, redirect, request, session
-import getpass
-import socket
 from sqlalchemy import create_engine
 from models.models import Tagging, Scraped
 
 tagging_operations = Blueprint('tagging_operations', __name__)
+
 
 @tagging_operations.route('/', methods=['GET'])
 def index():
@@ -65,4 +64,3 @@ def create_final_dataset():
             'FROM tagging INNER JOIN scraped ON scraped.id = tagging.scraped_id '
     df = pd.read_sql(query, con=connection, index_col="id")
     return df
-
