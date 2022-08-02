@@ -5,6 +5,8 @@ notes.txt
 __pycache__/
 static/datas/data2.csv
 static/datas/dataset.csv
+static/datas/data_onceki.csv
+static/datas/vea1.xlsx
 static/.DS_Store
 flask_session/
 __pycache__
