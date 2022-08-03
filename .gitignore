@@ -13,3 +13,5 @@ __pycache__
 .idea
 views/__pycache__
 models/__pycache__
+.DS_Store
+static/datas/.DS_Store

@@ -1,6 +1,6 @@
 import pandas as pd
 from flask import Blueprint, render_template, redirect, request, session
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, func
 from models.models import Tagging, Scraped
 
 tagging_operations = Blueprint('tagging_operations', __name__)
@@ -50,9 +50,10 @@ def delete(id):
 def extract_dataset():
     user = 'seymasa' if session['user'] == 'None' else session['user']
     df = create_final_dataset()
-    print(df.head(3))
-    print(df.values.tolist())
-    return render_template('dataset.html', user=user, dataset=df.values.tolist())
+    information = Scraped.query.with_entities(Scraped.label, func.count(Scraped.text)).filter(Scraped.tagging_status == True).group_by(Scraped.label).all()
+    for i in information:
+        print(i)
+    return render_template('dataset.html', user=user, dataset=df.values.tolist(), information=information)
 
 
 def create_final_dataset():
@@ -64,3 +65,4 @@ def create_final_dataset():
             'FROM tagging INNER JOIN scraped ON scraped.id = tagging.scraped_id '
     df = pd.read_sql(query, con=connection, index_col="id")
     return df
+
