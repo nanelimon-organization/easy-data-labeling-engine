@@ -59,8 +59,7 @@ def create_final_dataset():
         'postgresql://ktbzsdryoagyfd:77e6db1cf7aeff73105c60b05327baab2510216f8fb7736f9f8b36cf005a284b@ec2-44-195-100-240.compute-1.amazonaws.com:5432/dem8vtnut4f7km',
         echo=True)
     connection = engine.raw_connection()
-    query = 'SELECT distinct on (tagging.scraped_id) tagging.scraped_id, tagging.id, scraped.text, tagging.tagger, tagging.tagged_date, scraped.label ' \
-            'FROM tagging INNER JOIN scraped ON scraped.id = tagging.scraped_id order by tagging.scraped_id'
+    query = "SELECT distinct on (tagging.scraped_id) tagging.scraped_id, tagging.id, scraped.text, tagging.tagger, tagging.tagged_date, scraped.label " \
+            "FROM tagging INNER JOIN scraped ON scraped.id = tagging.scraped_id where not scraped.label = 'Sil' order by tagging.scraped_id"
     df = pd.read_sql(query, con=connection, index_col="id")
     return df
-
