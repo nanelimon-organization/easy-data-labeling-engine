@@ -5,7 +5,7 @@ Bu sayede hangi sınıftan ne kadar etiketli veriye sahip olunduğu ve kaç adet
 veri etiketleme adımındayken monitörize edilmesi sağlanmıştır. 
 Etiketlemenin sonunda etiketli verilerin incelenebilmesi ve veri setinin excel formatında çıktısının alınması gibi özellikleri de bulunmaktadır. 
 Bu özellikleri sayesinde etiketli bir veri seti oluşturulması için gerekli bütün adımlar tek bir otomasyon ile yapılabilir hale gelmiştir.
-Heroku bulut tabanlı platform servisi kullanılarak ücretsiz bir şekilde verileri paylaşma ve etiketli verilerin database e aktarılıp veri setinin oluşturulması sağlanmıştır.
+[Heroku bulut tabanlı platform servisi](https://www.heroku.com/about#:~:text=Heroku%20is%20a%20container%2Dbased,getting%20their%20apps%20to%20market.) kullanılarak ücretsiz bir şekilde verileri paylaşma ve etiketli verilerin database e aktarılıp veri setinin oluşturulması sağlanmıştır.
 
 
 #### Aracın kullanımını anlatan video için <youtube-link>
