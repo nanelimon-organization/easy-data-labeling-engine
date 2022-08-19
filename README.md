@@ -8,7 +8,7 @@ Bu özellikleri sayesinde etiketli bir veri seti oluşturulması için gerekli b
 [Heroku bulut tabanlı platform servisi](https://www.heroku.com/about#:~:text=Heroku%20is%20a%20container%2Dbased,getting%20their%20apps%20to%20market.) kullanılarak ücretsiz bir şekilde verileri paylaşma ve etiketli verilerin database e aktarılıp veri setinin oluşturulması sağlanmıştır.
 
 
-#### Aracın kullanımını anlatan video için <youtube-link>
+#### Araç kullanımlarını anlatan video için [buraya tıklayınız.](https://youtu.be/osjWOwDcqvQ)
 
 # Ortam Oluşturma
 
