@@ -9,7 +9,7 @@ Bu özellikleri sayesinde etiketli bir veri seti oluşturulması için gerekli b
 
 
 #### Araç kullanımlarını anlatan video için [buraya tıklayınız.](https://youtu.be/osjWOwDcqvQ)
-#### Araç [araç linki](https://easy-data-labeling-engine.herokuapp.com/)
+#### [araç linki](https://easy-data-labeling-engine.herokuapp.com/)
 
 
 # Ortam Oluşturma
